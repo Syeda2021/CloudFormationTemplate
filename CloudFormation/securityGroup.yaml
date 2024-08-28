@@ -1,0 +1,21 @@
+Resources:
+  CD2401SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "This is a web application SG."
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0 # Allows SSH access from anywhere (modify as needed)
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0 # Allows HTTP access from anywhere
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0 # Allows HTTPS access from anywhere
+      Tags:
+        - Key: Name
+          Value: MyLaunchTemplateSecurityGroup

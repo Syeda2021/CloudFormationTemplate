@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+Outputs:
+  BucketName:
+    Description: "Stack Output Bucket"
+    Value: !Ref MyBucket
+    Export:
+      Name: MyStackBucket
+
+
+# aws cloudformation create-stack --stack-name StackBucketlab9 --template-body file://StackOutputs.yaml --capabilities CAPABILITY_NAMED_IAM

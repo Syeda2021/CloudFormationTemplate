@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  EnvironmentType:
+    Type: String
+    Default: dev
+    AllowedValues:
+      - dev
+      - prod
+Conditions:
+  IsProd: !Equals [!Ref EnvironmentType, prod]
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+    Condition: IsProd
+    Properties:
+      BucketName: !Join ['-', [my-prod-bucket-1234hfhhfye, !Ref AWS::AccountId]]
